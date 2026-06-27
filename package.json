@@ -1,0 +1,16 @@
+{
+  "name": "loom-server",
+  "version": "1.0.0",
+  "description": "LOOM Messenger Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.14.2",
+    "sqlite3": "^5.1.6",
+    "multer": "^1.4.5",
+    "cors": "^2.8.5"
+  }
+}

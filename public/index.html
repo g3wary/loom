@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOM — Бесплатный мессенджер</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .logo {
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0088cc, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .slogan {
+            font-size: 20px;
+            color: #8a8a8a;
+            margin-top: 4px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(49, 162, 76, 0.2);
+            color: #31a24c;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 16px 0 24px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 24px 0 32px;
+            text-align: left;
+        }
+        .feature {
+            background: #1a1a1a;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        .feature i { color: #0088cc; font-size: 18px; width: 24px; text-align: center; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0088cc, #764ba2);
+            color: white;
+        }
+        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-secondary {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #2a2a2a;
+            margin-top: 12px;
+        }
+        .btn-secondary:hover { background: #2a2a2a; }
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #3a3a3a;
+            font-size: 13px;
+            margin: 16px 0;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #2a2a2a;
+        }
+        .install-hint {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #2a2a2a;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #8a8a8a;
+        }
+        .footer { margin-top: 32px; font-size: 13px; color: #4a4a4a; }
+        .version { font-size: 12px; color: #3a3a3a; margin-top: 8px; }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 16px 0;
+        }
+        .stat .number { font-size: 24px; font-weight: 700; color: white; }
+        .stat .label { font-size: 13px; color: #6a6a6a; }
+
+        @media (max-width: 480px) {
+            .logo { font-size: 52px; }
+            .features { grid-template-columns: 1fr; }
+            .btn { font-size: 16px; padding: 14px 20px; }
+            .stats { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">LOOM</div>
+    <div class="slogan">Сплетаем людей</div>
+    <div class="badge">🚀 Бесплатно • Без рекламы</div>
+
+    <div class="stats">
+        <div class="stat"><div class="number" id="usersCount">0</div><div class="label">Пользователей</div></div>
+        <div class="stat"><div class="number" id="onlineCount">0</div><div class="label">Онлайн</div></div>
+        <div class="stat"><div class="number">24/7</div><div class="label">Поддержка</div></div>
+    </div>
+
+    <div class="features">
+        <div class="feature"><i>💬</i> Мгновенные сообщения</div>
+        <div class="feature"><i>🔒</i> Безопасно и приватно</div>
+        <div class="feature"><i>📸</i> Фото и видео</div>
+        <div class="feature"><i>🎙️</i> Голосовые сообщения</div>
+        <div class="feature"><i>👥</i> Группы и каналы</div>
+        <div class="feature"><i>📱</i> Работает на всех телефонах</div>
+    </div>
+
+    <div class="download-section">
+        <a href="/loom.apk" class="btn btn-primary" download>
+            <span>⬇️</span> Скачать LOOM (APK)
+        </a>
+        <div class="divider">или</div>
+        <button class="btn btn-secondary" onclick="installPWA()">
+            <span>🌐</span> Установить через браузер
+        </button>
+    </div>
+
+    <div class="install-hint">
+        📱 Нажми "Скачать APK" → Установи → Зарегистрируйся → Общайся!
+    </div>
+
+    <div class="footer">
+        LOOM — твой новый способ общения <br>
+        <span class="version">Версия 1.0.0</span>
+    </div>
+</div>
+
+<script>
+    async function fetchStats() {
+        try {
+            const response = await fetch('/api/users');
+            const users = await response.json();
+            document.getElementById('usersCount').textContent = users.length || 0;
+            document.getElementById('onlineCount').textContent = users.filter(u => u.online).length || 0;
+        } catch (e) {}
+    }
+    fetchStats();
+    setInterval(fetchStats, 10000);
+
+    function installPWA() {
+        alert('1. Нажми на меню браузера (три точки)\n2. Выбери "Добавить на экран"\n3. Нажми "Установить"');
+    }
+
+    async function checkAPK() {
+        try {
+            const response = await fetch('/loom.apk');
+            if (!response.ok) {
+                document.querySelector('.btn-primary').innerHTML = '<span>📱</span> Установить через браузер';
+                document.querySelector('.btn-primary').href = '#';
+                document.querySelector('.btn-primary').onclick = function(e) {
+                    e.preventDefault();
+                    installPWA();
+                };
+            }
+        } catch (e) {}
+    }
+    checkAPK();
+</script>
+
+</body>
+</html>
